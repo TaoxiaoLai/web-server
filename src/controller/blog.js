@@ -26,7 +26,27 @@ const getDetail = (id) => {
     ]
 }
 
+const newBlog = (blogData = {}) => {
+    console.log(blogData)
+    return {
+        id: 3   // 表示新建博客，插入到数据里面的id
+    }
+}
+
+const updateBlog = (id, blogData = {}) => {
+    console.log(id, blogData)
+    return true
+}
+
+const delBlog = (id) => {
+    console.log(id)
+    return true
+}
+
 module.exports = {
     getList,
-    getDetail
+    getDetail,
+    newBlog,
+    updateBlog,
+    delBlog
 }
