@@ -48,12 +48,21 @@ const serverHandle = (req, res) => {
     getPostData(req).then(postData => {
         req.body = postData
         // 处理blog路由
-        const blogData = handleBlogRouter(req, res) 
-        if (blogData) {
-            res.end(
-                JSON.stringify(blogData)
-            )
-            return 
+        // const blogData = handleBlogRouter(req, res) 
+        // if (blogData) {
+        //     res.end(
+        //         JSON.stringify(blogData)
+        //     )
+        //     return 
+        // }
+        const blogResult = handleBlogRouter(req, res)
+        if (blogResult) {
+            blogResult.then(blogData => {
+                res.end(
+                    JSON.stringify(blogData)
+                )
+            })
+            return
         }
 
         // 处理user路由
@@ -67,7 +76,7 @@ const serverHandle = (req, res) => {
 
         // 未命中路由
         res.writeHead(404, {"Content-type": "text/plain"})
-        res.write("404 Not Found\n")
+        res.write("404 Not Founded\n")
         res.end()
     })
 }
