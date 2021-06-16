@@ -47,9 +47,8 @@ const updateBlog = (id, blogData = {}) => {
     const sql = `
         update blogs set title='${title}', content='${content}' where id=${id};
     `
-    return exec(sql).then(updateDate => {
-        console.log(updateDate)
-        if (updateDate.affectedRows > 0) {
+    return exec(sql).then(updateData => {
+        if (updateData.affectedRows > 0) {
             return true
         }
         return false
@@ -60,8 +59,8 @@ const delBlog = (id, author) => {
     const sql = `
         delete from blogs where id=${id} and author='${author}';
     `
-    return exec(sql).then( delDate => {
-        if (delDate.affectedRows > 0) {
+    return exec(sql).then( delData => {
+        if (delData.affectedRows > 0) {
             return true
         }
         return false
